@@ -26,6 +26,18 @@
                 <option value="{{$type->id}}">{{$type->name}}</option>
             @endforeach
         </select>
+
+        @foreach ($technologies as $technology)
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" @checked($project->technologies->contains($technology->id)) name="tags[]" value="{{$technology->id}}" id="tag-{{$technology->id}}">
+            <label class="form-check-label" for="tag-{{$technology->id}}">
+              {{$technology->name}}
+            </label>
+        </div>
+            
+        @endforeach
+
     <div class="mb-3">
         <label for="client_name" class="form-label">Client name</label>
         <input type="text" class="form-control" id="client_name" name="client_name" value="{{$project->client_name}}">

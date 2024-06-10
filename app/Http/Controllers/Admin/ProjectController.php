@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Type;
 use App\Models\Technology;
+use Illuminate\Validation\Rules\Exists;
 
 class ProjectController extends Controller
 {
@@ -50,7 +51,8 @@ class ProjectController extends Controller
                 'client_name' => 'required|min:5|max:250',
                 'summary' => 'required|min:15',
                 'cover_image' => 'image',
-                'type_id' => 'nullable|exists:types,id'
+                'type_id' => 'nullable|exists:types,id',
+                'tags' => 'exists:technologies,id'
             ]
         );
         $formdata = $request->all();
